@@ -118,7 +118,8 @@ def setup(config, args, *extra, **kwargs):
         with codecs.open(full_path, 'w', encoding='utf-8') as out:
             full_url = 'https://inthe.am%s' % url
             content = api.get(full_url).content
-            out.write(content)
+            decoded_content = content.decode('utf-8')
+            out.write(decoded_content)
             logger.info(
                 "File '%s' written to %s.",
                 filename,
